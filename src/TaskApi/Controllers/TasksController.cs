@@ -24,6 +24,7 @@ public class TasksController : ControllerBase
     {
         var task = _repo.GetById(id);
         return task is null ? NotFound() : Ok(task);
+        //return BadRequest();
     }
 
     [HttpPost]
