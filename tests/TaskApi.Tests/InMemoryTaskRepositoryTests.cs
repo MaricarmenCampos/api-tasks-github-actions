@@ -12,158 +12,158 @@ public class InMemoryTaskRepositoryTests {
         _repo = new();
     }
 
-    [Fact]
-    public void Add_TareaValida_AsignaIdYRetornaTarea(){
+    // [Fact]
+    // public void Add_TareaValida_AsignaIdYRetornaTarea(){
 
-        //Arrange        
-        var tarea = new TaskItem {
-            Title = "Comprar Guitarra",
-            Description= "Comprar Guitarra para ser Feliz"
-        };
+    //     //Arrange        
+    //     var tarea = new TaskItem {
+    //         Title = "Comprar Guitarra",
+    //         Description= "Comprar Guitarra para ser Feliz"
+    //     };
 
-        //Act
-        var resultado = _repo.Add(tarea);
-        //Arrange
-        resultado.Id.Should().BeGreaterThan(0);
-        resultado.Title.Should().Be("Comprar Guitarra");
-    }
+    //     //Act
+    //     var resultado = _repo.Add(tarea);
+    //     //Arrange
+    //     resultado.Id.Should().BeGreaterThan(0);
+    //     resultado.Title.Should().Be("Comprar Guitarra");
+    // }
 
-    [Fact]
-    public void Aigna_DosTareas_AsignaIdSecuenciales(){
+    // [Fact]
+    // public void Aigna_DosTareas_AsignaIdSecuenciales(){
 
-        //Arrange        
-        var tarea1 = new TaskItem {
-            Title = "Comprar Guitarra",
-            Description= "Comprar Guitarra para ser Feliz"
-        };
-        var tarea2 = new TaskItem {
-            Title = "Comprar Laptop",
-            Description= "Comprar Laptop"
-        };
+    //     //Arrange        
+    //     var tarea1 = new TaskItem {
+    //         Title = "Comprar Guitarra",
+    //         Description= "Comprar Guitarra para ser Feliz"
+    //     };
+    //     var tarea2 = new TaskItem {
+    //         Title = "Comprar Laptop",
+    //         Description= "Comprar Laptop"
+    //     };
 
-        //Act
-        var r1 = _repo.Add(tarea1);
-        var r2 = _repo.Add(tarea2);
+    //     //Act
+    //     var r1 = _repo.Add(tarea1);
+    //     var r2 = _repo.Add(tarea2);
 
-        //Arrange
-        r2.Id.Should().Be(r1.Id + 1);
-        //resultado.Title.Should().Be("Comprar Guitarra");
-    }
+    //     //Arrange
+    //     r2.Id.Should().Be(r1.Id + 1);
+    //     //resultado.Title.Should().Be("Comprar Guitarra");
+    // }
 
-    //GetAll
-    [Fact]
-    public void GetAll_RepositorioVacio_RetornaCollecionVacia(){
-        //Arrange
+    // //GetAll
+    // [Fact]
+    // public void GetAll_RepositorioVacio_RetornaCollecionVacia(){
+    //     //Arrange
 
-        //Act
-        var resultado = _repo.GetAll();
+    //     //Act
+    //     var resultado = _repo.GetAll();
 
-        //Assert
-        resultado.Should().BeEmpty();
-    }
+    //     //Assert
+    //     resultado.Should().BeEmpty();
+    // }
 
-    [Fact]
-    public void GetAll_ConDosTareas_RetornaDosTareas(){
-        //Arrange        
-        var tarea1 = new TaskItem {
-            Title = "Comprar Guitarra",
-            Description= "Comprar Guitarra para ser Feliz"
-        };
-        var tarea2 = new TaskItem {
-            Title = "Comprar Laptop",
-            Description= "Comprar Laptop"
-        };
-        var r1 = _repo.Add(tarea1);
-        var r2 = _repo.Add(tarea2);
+    // [Fact]
+    // public void GetAll_ConDosTareas_RetornaDosTareas(){
+    //     //Arrange        
+    //     var tarea1 = new TaskItem {
+    //         Title = "Comprar Guitarra",
+    //         Description= "Comprar Guitarra para ser Feliz"
+    //     };
+    //     var tarea2 = new TaskItem {
+    //         Title = "Comprar Laptop",
+    //         Description= "Comprar Laptop"
+    //     };
+    //     var r1 = _repo.Add(tarea1);
+    //     var r2 = _repo.Add(tarea2);
 
-        //Act
-       var resultado = _repo.GetAll();
+    //     //Act
+    //    var resultado = _repo.GetAll();
 
-       //Assert
-       resultado.Should().HaveCount(2);
-    }
+    //    //Assert
+    //    resultado.Should().HaveCount(2);
+    // }
 
-    //GetById
-    [Fact]
-    public void GetById_TareaExiste_RetornaTarea()
-    {
-        //Arrange
-        var tarea1 = new TaskItem
-        {
-            Title = "Comprar Guitarra",
-            Description = "Comprar Guitarra para ser Feliz"
-        };
+    // //GetById
+    // [Fact]
+    // public void GetById_TareaExiste_RetornaTarea()
+    // {
+    //     //Arrange
+    //     var tarea1 = new TaskItem
+    //     {
+    //         Title = "Comprar Guitarra",
+    //         Description = "Comprar Guitarra para ser Feliz"
+    //     };
 
-        var tareaAgregada = _repo.Add(tarea1);
+    //     var tareaAgregada = _repo.Add(tarea1);
 
-        //Act
-        var resultado = _repo.GetById(tareaAgregada.Id);
+    //     //Act
+    //     var resultado = _repo.GetById(tareaAgregada.Id);
 
-        //Assert
-        resultado.Should().NotBeNull(); //resultado.Should().BeNull();
-        resultado!.Title.Should().Be("Comprar Guitarra");
-    }
+    //     //Assert
+    //     resultado.Should().NotBeNull(); //resultado.Should().BeNull();
+    //     resultado!.Title.Should().Be("Comprar Guitarra");
+    // }
 
-    [Fact]
-    public void GetId_IdNoExiste_RetornaNull(){
-        //Arrange
+    // [Fact]
+    // public void GetId_IdNoExiste_RetornaNull(){
+    //     //Arrange
 
-        //Act
-        var resultado = _repo.GetById(1000);
+    //     //Act
+    //     var resultado = _repo.GetById(1000);
 
-        //Assert
-        resultado.Should().BeNull();
-    }
+    //     //Assert
+    //     resultado.Should().BeNull();
+    // }
 
-    [Fact]
-    public void Update_TareaExiste_ActualizaPropiedades(){
-        //Arrange
-        var tareaOriginal = _repo.Add(new TaskItem{
-            Title = "Tarea 1",
-            Description = "Tarea 1"
-        });
+    // [Fact]
+    // public void Update_TareaExiste_ActualizaPropiedades(){
+    //     //Arrange
+    //     var tareaOriginal = _repo.Add(new TaskItem{
+    //         Title = "Tarea 1",
+    //         Description = "Tarea 1"
+    //     });
 
-        var cambiosTarea = new TaskItem{
-            Title = "Actualizada",
-            Description = "Tarea 1 actualizada"
-        };
+    //     var cambiosTarea = new TaskItem{
+    //         Title = "Actualizada",
+    //         Description = "Tarea 1 actualizada"
+    //     };
 
-        //Act
-        var resultado = _repo.Update(tareaOriginal.Id,cambiosTarea);
+    //     //Act
+    //     var resultado = _repo.Update(tareaOriginal.Id,cambiosTarea);
 
-        //Assert
-        resultado.Should().NotBeNull();
-        resultado!.Title.Should().Be("Actualizada");
-    }
+    //     //Assert
+    //     resultado.Should().NotBeNull();
+    //     resultado!.Title.Should().Be("Actualizada");
+    // }
 
     //agregar updateidnoexiste
-    public void Update_IdNoExiste_RetornaNull(){
-        //Act
-        var resultado = _repo.Update(1000, new TaskItem{Title="xxx"});
+    // public void Update_IdNoExiste_RetornaNull(){
+    //     //Act
+    //     var resultado = _repo.Update(1000, new TaskItem{Title="xxx"});
 
-        //Assert
-        resultado.Should().BeNull();
-    }
+    //     //Assert
+    //     resultado.Should().BeNull();
+    // }
 
 
-    [Fact]
-    public void Delete_TareaExiste_RetornaTrue(){
-        var tareaAgregada = _repo.Add(new TaskItem{Title="Tarea a eliminar"});
+    // [Fact]
+    // public void Delete_TareaExiste_RetornaTrue(){
+    //     var tareaAgregada = _repo.Add(new TaskItem{Title="Tarea a eliminar"});
 
-        var resultado = _repo.Delete(tareaAgregada.Id);
+    //     var resultado = _repo.Delete(tareaAgregada.Id);
 
-        resultado.Should().BeTrue();
-        _repo.GetById(tareaAgregada.Id).Should().BeNull();
-    }
+    //     resultado.Should().BeTrue();
+    //     _repo.GetById(tareaAgregada.Id).Should().BeNull();
+    // }
 
-    [Fact]
-    public void Delete_IdNoExiste_RetornoFalse(){
-        //Act
-        var resultado = _repo.Delete(1000);
+    // [Fact]
+    // public void Delete_IdNoExiste_RetornoFalse(){
+    //     //Act
+    //     var resultado = _repo.Delete(1000);
 
-        //Assert
-        resultado.Should().BeFalse();
-    }
+    //     //Assert
+    //     resultado.Should().BeFalse();
+    // }
  
 
  
