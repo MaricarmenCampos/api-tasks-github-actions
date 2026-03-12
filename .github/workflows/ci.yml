@@ -59,7 +59,7 @@ jobs:
             subscription-id: ${{secrets.AZURE_SUSCRIPCION_ID}}
 
         - name: Deploy to Azure Service
-          uses: azure/webapps-deploy@2
+          uses: azure/webapps-deploy@v2
           with:
             app-name: app-api-uv-dev16
             package: artifact/
