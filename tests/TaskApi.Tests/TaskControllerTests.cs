@@ -18,23 +18,23 @@ public class TaskControllerTests{
     }
 
 
-    // [Fact]
-    // public void GetAll_HayTareas_RetornaOkConListaDeTareas(){
+    [Fact]
+    public void GetAll_HayTareas_RetornaOkConListaDeTareas(){
         
-    //     //Arrange
-    //     _mockRepo.Setup(r => r.GetAll()).Returns(
-    //         new List<TaskItem>{
-    //             new (){Id=1, Title="Tarea 1"},
-    //             new (){Id=2, Title="Tarea 2"}
-    //         }
-    //     );
+        //Arrange
+        _mockRepo.Setup(r => r.GetAll()).Returns(
+            new List<TaskItem>{
+                new (){Id=1, Title="Tarea 1"},
+                new (){Id=2, Title="Tarea 2"}
+            }
+        );
 
-    //     //Assert
-    //     _ctrl.GetAll()
-    //     .Should().BeOfType<OkObjectResult>()
-    //     .Which.Value.Should().BeAssignableTo<IEnumerable<TaskItem>>();
-    //     .Which.Should().HaveCount(2);
-    // }
+        //Assert
+        _ctrl.GetAll()
+        .Should().BeOfType<OkObjectResult>()
+        .Which.Value.Should().BeAssignableTo<IEnumerable<TaskItem>>()
+        .Which.Should().HaveCount(2);
+    }
 
     //GetById
     [Fact]
